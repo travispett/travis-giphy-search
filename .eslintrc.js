@@ -12,6 +12,10 @@ module.exports = {
     'html'
   ],
   'rules': {
+    // Important stuff: 2 space indent and semicolons
+    'indent': ['error', 2],
+    'semi': ['error', 'always'],
+
     // Disable eslint-plugin-filenames
     'filenames/match-regex': 0,
     'filenames/match-exported': 0,
@@ -24,7 +28,6 @@ module.exports = {
     'no-unused-vars': ['off'],
     'object-curly-spacing': ['error', 'always'],
     'prefer-const': ['off'],
-    'semi': ['error', 'always'],
     'space-before-function-paren': ['error', 'never']
   }
 };
