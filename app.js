@@ -1,3 +1,7 @@
+// Load variables into environment from .env file.
+// TODO: The result of this could be assigned and used to raise an error if one is returned.
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const router = express.Router();
