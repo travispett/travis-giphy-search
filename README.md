@@ -4,7 +4,7 @@ A simple Giphy search app.
 
 ## Dependencies
 
-- Node.js (built and tested with 8.9.0)
+- Node.js (built and tested with 8.9.0, requires async/await support which is >7.6.0)
 
 ## Build Setup
 
@@ -56,6 +56,7 @@ Those will all require some kind of database interaction, so might as well start
 
 - `app.js` is the Express app base.
 - `app/controllers/GifsController.js` holds the `index` route at `/api/gifs`.
+- `app/services/GiphyService.js` is a small service for interacting with the Giphy API. Only search is implemented.
 
 ## Next steps
 
