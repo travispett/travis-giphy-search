@@ -57,6 +57,10 @@ Those will all require some kind of database interaction, so might as well start
 
 ## Reviewing the app
 
+No unit or e2e tests, sorry :(
+
+Mobile isn't perfect, and huge gifs are probably an issue on desktop and mobile.
+
 #### Server (root `app.js` and `app/` directory)
 
 - `app.js` is the Express app base.
@@ -67,8 +71,11 @@ Those will all require some kind of database interaction, so might as well start
 
 - `main.js` is general Vue setup with vue-material.
 - `App.vue` generally there wouldn't be app components in here but I elected not to go with vue-router since this literally is a single page app.
+- `SearchContainer.vue` this holds the search and gif components and handles the event fired from the search submit.
 - `SearchForm.vue` the emitting of events after the API request isn't ideal, but at least it is child-to-parent instead of parent-to-child. Here is how this usually would work with Vuex:
   - The search button click would dispatch an action which would kick off the API request, the result would then set the state which the GifContainer component already knows how to handle.
+- `GifContainer.vue` this is passed the raw data object from the server (which is the raw response data object from the Giphy api) to iterate over and show.
+- `services/GifService.js` this interfaces with the Express API.
 
 ## Next steps
 
@@ -79,3 +86,7 @@ Given more time and to make this more production-ready and usable I would:
   - Write some specs for this since any magic loading is usually pretty hard to read and comprehend.
 - Use something like [nock](https://github.com/node-nock/nock) for replaying HTTP requests to GIPHY's API for easier testing.
 - Clean up separation of server and frontend and ultimately make running them together in development easier.
+
+## Deployment
+
+Because of the tangled dependencies this has to be built to `dist/` locally and pushed up to avoid installing all dev dependencies (needed for the build) on Heroku.
