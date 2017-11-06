@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+  <div id="app" class="container">
+    <toolbar></toolbar>
+    <search-container></search-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Toolbar from './components/Toolbar.vue';
+import SearchContainer from './components/SearchContainer.vue';
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: { Toolbar, SearchContainer }
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  [v-cloak] {
+    display: none;
+  }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
+    display: flex;
+  }
+  .container {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1;
+  }
 </style>

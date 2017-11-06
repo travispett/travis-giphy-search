@@ -13,14 +13,9 @@ async function search(query) {
   try {
     const params = Object.assign(globalApiOptions, { q: query });
     const response = await axios.get(`${giphyApiBase}/gifs/search`, { params });
-
     const { data, meta } = response.data;
 
-    if (meta.status !== 200) {
-      return new Error(meta.message);
-    }
-
-    return data;
+    return meta.status === 200 ? data : new Error(meta.message);
   } catch (e) {
     return new Error(e);
   }

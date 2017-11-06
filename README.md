@@ -40,6 +40,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 Initially scaffolded with the [vue-cli webpack template](https://github.com/vuejs-templates/webpack).
 This creates a Vue app with some somewhat reasonable defaults. Nothing in `build/` was changed and very little in `config/` was changed.
+Some small things were added:
+- [vue-material](http://vuematerial.io/) for styling and layout.
+- [axios](https://github.com/axios/axios) for communicating with the server. Ultimately there are better ways to set up these services, I'll touch on this in the "Reviewing the app" section below though.
 
 The Express app was written from scratch and is fairly simple. Here are some things it does:
 - Loads environment variables from a `.env` file. There is an example at `.env.example`.
@@ -54,9 +57,18 @@ Those will all require some kind of database interaction, so might as well start
 
 ## Reviewing the app
 
+#### Server (root `app.js` and `app/` directory)
+
 - `app.js` is the Express app base.
 - `app/controllers/GifsController.js` holds the `index` route at `/api/gifs`.
-- `app/services/GiphyService.js` is a small service for interacting with the Giphy API. Only search is implemented.
+- `app/services/GifService.js` is a small service for interacting with the Giphy API. Only search is implemented.
+
+#### Vue app (`src/` directory)
+
+- `main.js` is general Vue setup with vue-material.
+- `App.vue` generally there wouldn't be app components in here but I elected not to go with vue-router since this literally is a single page app.
+- `SearchForm.vue` the emitting of events after the API request isn't ideal, but at least it is child-to-parent instead of parent-to-child. Here is how this usually would work with Vuex:
+  - The search button click would dispatch an action which would kick off the API request, the result would then set the state which the GifContainer component already knows how to handle.
 
 ## Next steps
 
