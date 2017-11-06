@@ -6,7 +6,7 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 const app = express();
-const PORT = process.env.API_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const GifsController = require('./app/controllers/GifsController');
 
