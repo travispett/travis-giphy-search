@@ -16,7 +16,7 @@ yarn install
 # Tab one for the front end:
 yarn run dev
 # Tab two for the API (ideally nodemon would handle file watching and reloading but not set up yet):
-node app.js
+yarn run start
 
 # build for production with minification
 yarn run build
