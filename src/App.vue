@@ -19,17 +19,4 @@ export default {
   [v-cloak] {
     display: none;
   }
-  html, body {
-    height: 100%;
-    overflow: hidden;
-  }
-  body {
-    display: flex;
-  }
-  .container {
-    min-height: 100%;
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 1;
-  }
 </style>
